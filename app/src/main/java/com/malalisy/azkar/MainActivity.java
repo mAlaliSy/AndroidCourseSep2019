@@ -1,13 +1,15 @@
 package com.malalisy.azkar;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView count, numberOfFives;
     Button increase;
@@ -22,25 +24,76 @@ public class MainActivity extends AppCompatActivity {
         numberOfFives = findViewById(R.id.txtNumberOfFives);
         increase = findViewById(R.id.btnIncrease);
 
-        increase.setOnClickListener(new OnTextListener());
+        increase.setOnClickListener(this);
+
 
         counter = 0;
 
+        Log.d("MainActivity:", "onCreate");
+
     }
 
-    class OnTextListener implements View.OnClickListener{
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("MainActivity:", "onStart");
 
-        @Override
-        public void onClick(View v) {
-            counter++;
-            if(counter >= 5){
-                counter = 0;
-                nOfFives++;
-            }
+    }
 
-            count.setText(counter + "");
-            numberOfFives.setText(nOfFives + "");
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("MainActivity:", "onResume");
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("MainActivity:", "onPause");
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("MainActivity:", "onStop");
+
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("MainActivity:", "onRestart");
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("MainActivity:", "onDestroy");
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btnIncrease:
+//                counter++;
+//                if (counter >= 5) {
+//                    counter = 0;
+//                    nOfFives++;
+//                }
+//
+//                count.setText(counter + "");
+//                numberOfFives.setText(nOfFives + "");
+
+                Intent intent = new Intent(MainActivity.this, Details.class);
+                startActivity(intent);
+
+
+                break;
+
         }
     }
-
 }

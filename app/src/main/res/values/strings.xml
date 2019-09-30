@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Azkar</string>
+    <string name="count">Count:</string>
+    <string name="nof5s">Number of fives:</string>
+
 
 </resources>
